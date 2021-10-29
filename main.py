@@ -23,7 +23,7 @@ bot = commands.Bot(command_prefix="+", intents=intents) #define prefix and defin
 
 @bot.event
 async def on_ready():
-    print('Bot is starting and ready for use!..') #when the bot's ready to be used, print a message to the console.
+    print("Bot is starting and ready for use!..") #when the bot's ready to be used, print a message to the console.
 
 
 
@@ -89,15 +89,20 @@ async def on_message(message):
     message.content = message.content.lower() #check to see if message is in caps or not.
     message.content = disnake.utils.remove_markdown(message.content) #remove markdown. Exampples: `||test||` " ```test``` "
 
+    if message.content == "eiufewhiuwefhuwefhwfhueiwfehihewfiwefiuwefiuhwefiuh":
+        return
+
+    else:
 
 
-    for word in blacklist: #get each bad word
-        if message.author.bot == True: #check to see if author is a bot. if you want the bot to detect bad words on another bot, remove this line
-            return #return the function of seeing if author is a bot. if you want the bot to detect bad words on another bot, remove this line
-        if message.content.count(word) > 0: #check the content count once.
-            await message.delete() #delete the bad word
-            embed = disnake.Embed(title="Message Deleted", description= f"Bad word blocked by {message.author.mention}..", colour=disnake.Color.random()) #send an embed
-            await message.channel.send(embed=embed) #send embed to channel
+
+        for word in blacklist: #get each bad word
+            if message.author.bot == True: #check to see if author is a bot. if you want the bot to detect bad words on another bot, remove this line
+                return #return the function of seeing if author is a bot. if you want the bot to detect bad words on another bot, remove this line
+            if message.content.count(word) > 0: #check the content count once.
+                await message.delete() #delete the bad word
+                embed = disnake.Embed(title="Message Deleted", description= f"Bad word blocked by {message.author.mention}..", colour=disnake.Color.random()) #send an embed
+                await message.channel.send(embed=embed) #send embed to channel
 
 
 
@@ -121,7 +126,7 @@ async def clear_base_filter(ctx):
     file.close()
 
     with open("basefilter.txt", "a") as f:
-        f.write("eiufewhiuwefhuwefhwfhueiwfehihewfiwefiuwefiuhwefiuihfeihufewiuhefwihuqfihuqfiheuihuqwdihbh")
+        f.write("eiufewhiuwefhuwefhwfhueiwfehihewfiwefiuwefiuhwefiuihfeihufewiuhefwihuqfihuqfiheuihuqwdihbh") #checks to see if the default word is in blacklist.
     f.close()
 
     await ctx.send(f'Base filter list cleared. Please allow up to 5 seconds while the system restarts.')
@@ -174,16 +179,19 @@ async def on_message(message):
     message.content = message.content.lower()
     message.content = disnake.utils.remove_markdown(message.content)
 
+    if message.content == "eiufewhiuwefhuwefhwfhueiwfehihewfiwefiuwefiuhwefiuh": #checks to see if the default word is in blacklist.
+        return
 
+    else:
 
-    for word in blacklist2:
-        if message.author.bot == True:
-            return
-        if message.content.count(word) > 0:
-            await message.delete()
-            embed = disnake.Embed(title="Message Deleted", description= f"Bad word blocked by {message.author.mention}..", colour=disnake.Color.random())
-            embed.timestamp = disnake.utils.utcnow()
-            await message.channel.send(embed=embed)
+        for word in blacklist2:
+            if message.author.bot == True:
+                return
+            if message.content.count(word) > 0:
+                await message.delete()
+                embed = disnake.Embed(title="Message Deleted", description= f"Bad word blocked by {message.author.mention}..", colour=disnake.Color.random())
+                embed.timestamp = disnake.utils.utcnow()
+                await message.channel.send(embed=embed)
 
 
 
