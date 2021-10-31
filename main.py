@@ -94,8 +94,6 @@ async def on_message(message):
 
     else:
 
-
-
         for word in blacklist: #get each bad word
             if message.author.bot == True: #check to see if author is a bot. if you want the bot to detect bad words on another bot, remove this line
                 return #return the function of seeing if author is a bot. if you want the bot to detect bad words on another bot, remove this line
@@ -179,7 +177,7 @@ async def on_message(message):
     message.content = message.content.lower()
     message.content = disnake.utils.remove_markdown(message.content)
 
-    if message.content == "eiufewhiuwefhuwefhwfhueiwfehihewfiwefiuwefiuhwefiuh": #checks to see if the default word is in blacklist.
+    if message.content == "eiufewhiuwefhuwefhwfhueiwfehihewfiwefiuwefiuhwefiuihfeihufewiuhefwihuqfihuqfiheuihuqwdihbh": #checks to see if the default word is in blacklist.
         return
 
     else:
