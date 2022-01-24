@@ -18,4 +18,4 @@ In MacOS, Python comes pre-installed. If you are on another Operating System, pl
 
 **New Update**
 
-Bug fixes.
+Added a webhook option so you can make the bot resend the user saying the bad word.
